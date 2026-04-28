@@ -33,77 +33,118 @@ This system converts unstructured resumes into structured, queryable data and ap
 ### 🧠 System Architecture (High-Level)
 Recruiter Query → Embedding → FAISS Retrieval → Aggregation  → Feature Scoring → Cross-Encoder Re-ranking → LLM Summary
 
-### 🔍 Data Pipeline
+### 🔍 Data Pipeline:
+
+<img width="332" height="417" alt="Screenshot 2026-04-27 at 19 08 30" src="https://github.com/user-attachments/assets/d93af2d7-d55f-443f-8d93-fa4ee03255a5" />
+
 
 #### Phase 1: Resume Processing & Structuring
-Ingestion from Unity Catalog volumes
-Parsing PDFs → structured JSON (ai_parse_document)
-Information extraction (ai_extract, 2-pass approach)
 
-#### Data modeling into structured tables:
+The pipeline transforms unstructured resume PDFs into structured data using Databricks AI functions.
 
-- resume_core
-- resume_skills
-- resume_experience
-- resume_education
-- Data cleaning (formatting, normalization, Unicode handling)
+**Ingestion:** Resumes are read from a Unity Catalog Volume using read_files.
+**Parsing:** ai_parse_document converts PDFs into structured JSON while preserving layout, extracting document **elements, content, bbox, type, error rate, page_id and confidence_score.** 
+**Extraction:** ai_extract (2-pass approach) extracts contact details and detailed profile information (skills, experience, education).
+
+<img width="783" height="66" alt="Screenshot 2026-04-27 at 19 06 07" src="https://github.com/user-attachments/assets/62076fa3-5efe-4a1e-8983-be1e5cde47df" />
+
+
+**Modeling:** 
+Data is flattened into tables (resume_core, resume_skills, resume_experience, resume_education) using explode() for efficient ** querying.
+
+<img width="547" height="532" alt="Screenshot 2026-04-27 at 18 58 28" src="https://github.com/user-attachments/assets/a46bf4da-9bdf-4e54-8c3a-42ddd715d6b3" />
+
+  
+#### Data cleaning (formatting, normalization, Unicode handling)
 - Synonym expansion + ontology-based mapping
 
+<img width="729" height="195" alt="Screenshot 2026-04-27 at 19 07 41" src="https://github.com/user-attachments/assets/ca868aa9-845f-4b5b-aaa3-b390387b11a2" />
+
+
 #### Phase 2: Embeddings & Indexing:
+
+<img width="622" height="424" alt="Screenshot 2026-04-27 at 19 09 42" src="https://github.com/user-attachments/assets/a183d514-d183-4af1-b980-fce7f6889d37" />
+
 
 - Section-level embeddings using Sentence-BERT
 - Stored in FAISS for fast similarity search
 
+
 #### Phase 3: Retrieval
 
 - Convert recruiter query → embeddings
-- Retrieve top-N relevant resume sections
+- Retrieve top N relevant resume sections
 - Aggregate to compute resume-level relevance
 
-#### Phase 4: Scoring & Re-Ranking
 
-- Feature-based scoring:
+#### Phase 4: Features Scoring 
+
 - Skill overlap
 - Experience alignment
 - Domain relevance
 - Seniority fit
 - Gap analysis
 
-#### Cross-encoder re-ranking:
+#### Cross-encoder re ranking:
 
 - Joint evaluation of query + resume
 - Improves contextual understanding and ranking precision
 
-#### Phase 5: Summary Generation
+#### 📊 Candidate Summary & Explainability Layer
 
-- Controlled LLM (Llama 3 via Ollama)
-- Generates concise, evidence-based summaries
-- Grounded in retrieved resume sections (reduces hallucination
+The system leverages the Genie Interaction Layer to generate concise, evidence-based candidate summaries. These summaries are strictly grounded in retrieved resume sections, ensuring high factual accuracy and minimizing hallucinations.
 
-#### 🔎 Explainability & Transparency
+##### 🔎 How it Works
+Context-Grounded Summarization
+Summaries are generated using only the most relevant retrieved resume segments (via semantic search + ranking), ensuring every statement is traceable to source data.
+Evidence Attribution
+Each summary is backed by explicit references to resume sections (experience, skills, projects), enabling transparency and trust.
 
-- Feature-level contribution to ranking
-- Clear reasoning behind candidate ordering
+#### Feature-Level Explainability
+Candidate ranking is decomposed into interpretable components such as:
 
-#### Highlights:
+Skill match score
+Experience relevance
+Domain alignment
+Seniority fit
+Education relevance
 
-- Strengths
-- Gaps
-- Matching evidence
+This allows recruiters to clearly understand why a candidate is ranked higher or lower.
+
+#### ✨ Key Output Highlights
+
+Each candidate profile includes:
+
+Strengths - Key areas where the candidate strongly aligns with job requirements (e.g., high-demand skills, relevant experience, domain expertise)
+Gaps - Missing or weaker areas compared to the job description (e.g., skill gaps, insufficient experience in specific domains)
+Matching Evidence - Direct excerpts or references from the resume that justify the identified strengths and gaps
+
+<img width="449" height="403" alt="Screenshot 2026-04-27 at 19 14 54" src="https://github.com/user-attachments/assets/78df1738-62fe-42d7-92a8-1d7fcc183132" />
+
 
 #### 📊 Evaluation Metrics:
 
 - ⏱️ Latency (retrieval, ranking, generation)
 - 🎯 Precision@K / Recall@K
-- 📈 Relevance score (semantic similarity)
 - 🔁 Consistency & hallucination checks
 - ⚖️ Scoring Approaches Compared
 
 - RAG-only (semantic similarity)
  
-- Cross-encoder + RAG
+- Cross-encoder
   
 - Hybrid (Feature scoring + Cross-encoder + RAG) ✅
+
+
+<img width="478" height="378" alt="Screenshot 2026-04-27 at 19 11 50" src="https://github.com/user-attachments/assets/517cf875-1622-4416-a2ec-7e2ffae1d89f" />
+
+
+Cross-encoder achieves highest precision and ranking quality
+Hybrid model improves over semantic retrieval significantly
+Feature-only model performs weakest - KEY WORD MATCHING (no semantic understanding)
+Semantic-only has good recall but lower ranking precision
+
+
 
 #### 🛠️ Tech Stack
 Python 3.10
