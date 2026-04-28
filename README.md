@@ -82,8 +82,7 @@ Data is flattened into tables (resume_core, resume_skills, resume_experience, re
 - Skill overlap
 - Experience alignment
 - Domain relevance
-- Seniority fit
-- Gap analysis
+- Education and location alignment
 
 #### Cross-encoder re ranking:
 
@@ -129,7 +128,17 @@ Matching Evidence - Direct excerpts or references from the resume that justify t
 - 🔁 Consistency & hallucination checks
 - ⚖️ Scoring Approaches Compared
 
-Built 5 benchmarking label  queries to evaluate model performance based on relevance.  
+Built 5 benchmarking label queries to evaluate model performance based on relevance.  
+
+
+ground_truth_df = pd.DataFrame([
+    {"query_id": "q1", "resume_id": "44", "relevance": 2},
+    {"query_id": "q1", "resume_id": "52", "relevance": 2},
+    {"query_id": "q1", "resume_id": "49", "relevance": 1},
+    {"query_id": "q1", "resume_id": "61", "relevance": 1},
+    {"query_id": "q1", "resume_id": "68", "relevance": 1},
+    {"query_id": "q1", "resume_id": "57", "relevance": 0},
+])
 
 - RAG-only (semantic similarity)
  
