@@ -1,6 +1,6 @@
 ### 🧠 AI-Powered Intelligent Recruiter Assistant:
 
-An explainable AI system for semantic resume matching, hybrid candidate ranking, and recruiter-facing insights — designed to reduce manual screening effort, eliminate keyword bias, and improve candidate discovery.
+An explainable AI system for semantic resume matching, hybrid candidate ranking, and recruiter-facing insights — designed to reduce manual screening effort and time to fill, eliminate keyword bias, and improve quality of hire. 
 
 ### 🚀 Business Problem:
 
@@ -8,12 +8,12 @@ Traditional Applicant Tracking Systems (ATS):
 
 Rely heavily on keyword matching, missing semantic relevance
 Lack transparency in candidate ranking
-Require manual resume screening, increasing recruiter effort
+Require manual resume screening, increasing recruiter effort and inconsistent definition and alignment between HM and roles. 
 Provide limited support for analytics and decision insights
 
 ### 💡 Solution Overview:
 
-This system converts unstructured resumes into structured, queryable data and applies hybrid retrieval + ranking to identify the most relevant candidates.
+This system converts unstructured resumes into structured, queryable data and applies hybrid  retrieval + re-ranking to identify the most relevant candidates.
 
 ### Key Capabilities:
 
@@ -28,12 +28,10 @@ This system converts unstructured resumes into structured, queryable data and ap
 ### 💼 Business Impact:
 ⏱️ Reduces resume screening time significantly
 🎯 Improves candidate quality via context-aware matching
-📈 Scales across large candidate datasets
 🤝 Enhances recruiter trust with explainable AI
 
 ### 🧠 System Architecture (High-Level)
-Recruiter Query → Embedding → FAISS Retrieval → Aggregation  
-→ Feature Scoring → Cross-Encoder Re-ranking → LLM Summary
+Recruiter Query → Embedding → FAISS Retrieval → Aggregation  → Feature Scoring → Cross-Encoder Re-ranking → LLM Summary
 
 ### 🔍 Data Pipeline
 
