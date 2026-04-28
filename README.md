@@ -90,7 +90,8 @@ Data is flattened into tables (resume_core, resume_skills, resume_experience, re
 
 ##### Output Scores:
 
-<img width="58" height="320" alt="Screenshot 2026-04-27 at 19 23 42" src="https://github.com/user-attachments/assets/a498c84c-94d1-44bf-89fd-ee19f8d301e0" />
+<img width="58" height="320" alt="Screenshot 2026-04-27 at 19 23 42" src="https://github.com/user-attachments/assets/a498c84c-94d1-44bf-89fd-ee19f8d301e0" /> <img width="215" height="337" alt="Screenshot 2026-04-27 at 19 23 35" src="https://github.com/user-attachments/assets/b02271d1-1a95-457e-afca-8474e3165a60" />
+
 
 
 
