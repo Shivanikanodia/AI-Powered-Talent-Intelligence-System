@@ -43,48 +43,55 @@ Parsing PDFs → structured JSON (ai_parse_document)
 Information extraction (ai_extract, 2-pass approach)
 
 #### Data modeling into structured tables:
-resume_core
-resume_skills
-resume_experience
-resume_education
-Data cleaning (formatting, normalization, Unicode handling)
-Synonym expansion + ontology-based mapping
+
+- resume_core
+- resume_skills
+- resume_experience
+- resume_education
+- Data cleaning (formatting, normalization, Unicode handling)
+- Synonym expansion + ontology-based mapping
 
 #### Phase 2: Embeddings & Indexing:
-Section-level embeddings using Sentence-BERT
-Stored in FAISS for fast similarity search
+
+- Section-level embeddings using Sentence-BERT
+- Stored in FAISS for fast similarity search
 
 #### Phase 3: Retrieval
-Convert recruiter query → embeddings
-Retrieve top-N relevant resume sections
-Aggregate to compute resume-level relevance
+
+- Convert recruiter query → embeddings
+- Retrieve top-N relevant resume sections
+- Aggregate to compute resume-level relevance
 
 #### Phase 4: Scoring & Re-Ranking
 
-Feature-based scoring:
-Skill overlap
-Experience alignment
-Domain relevance
-Seniority fit
-Gap analysis
+- Feature-based scoring:
+- Skill overlap
+- Experience alignment
+- Domain relevance
+- Seniority fit
+- Gap analysis
 
 #### Cross-encoder re-ranking:
-Joint evaluation of query + resume
-Improves contextual understanding and ranking precision
+
+- Joint evaluation of query + resume
+- Improves contextual understanding and ranking precision
 
 #### Phase 5: Summary Generation
-Controlled LLM (Llama 3 via Ollama)
-Generates concise, evidence-based summaries
-Grounded in retrieved resume sections (reduces hallucination
+
+- Controlled LLM (Llama 3 via Ollama)
+- Generates concise, evidence-based summaries
+- Grounded in retrieved resume sections (reduces hallucination
 
 #### 🔎 Explainability & Transparency
-Feature-level contribution to ranking
-Clear reasoning behind candidate ordering
+
+- Feature-level contribution to ranking
+- Clear reasoning behind candidate ordering
 
 #### Highlights:
-Strengths
-Gaps
-Matching evidence
+
+- Strengths
+- Gaps
+- Matching evidence
 
 #### 📊 Evaluation Metrics:
 ⏱️ Latency (retrieval, ranking, generation)
