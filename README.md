@@ -89,12 +89,6 @@ Resume Chunking - For 500 resumes nearly ~15,000 raw chunks and ~3,400 cleaned c
 - Joint evaluation of query + resume
 - Improves contextual understanding and ranking precision
 
-##### Output Scores:
-
-<img width="559" height="510" alt="Screenshot 2026-04-27 at 19 27 11" src="https://github.com/user-attachments/assets/d7f13914-0d1a-4cec-a474-1786dc3442ad" />
-
-
-
 #### 📊 Candidate Summary & Explainability Layer
 
 The system leverages the Genie Interaction Layer to generate concise, evidence-based candidate summaries. These summaries are strictly grounded in retrieved resume sections, ensuring high factual accuracy and minimizing hallucinations.
