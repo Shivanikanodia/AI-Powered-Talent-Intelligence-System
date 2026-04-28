@@ -180,8 +180,6 @@ Python 3.10
 FAISS
 Sentence-Transformers
 Cross-Encoder (MiniLM)
-Streamlit
-Ollama (Llama 3)
 Databricks (Delta Lake, AI Functions)
 SQL + Semantic Data Models
 
@@ -194,20 +192,16 @@ config.py           # Configurations and scoring weights
 resume_index/       # Stored FAISS index + metadata
 data/resumes/       # Sample anonymized resumes
 
-#### 🧪 Prototype Status
-
-⚠️ This is a working prototype, not a fully productionized system.
 
 #### Implemented:
-
 Resume preprocessing
 Semantic retrieval (FAISS)
 Feature-based scoring
 Hybrid ranking
 Explainability outputs
+ Benchmark RAG vs Cross-Encoder vs Hybrid approaches  
 
 ### 🔮 Future Work
- Benchmark RAG vs Cross-Encoder vs Hybrid approaches  
 - MLflow-based evaluation and experiment tracking  
 - Role-specific prompt templates  
 - Responsible AI safeguards (bias checks, prompt injection handling)  
