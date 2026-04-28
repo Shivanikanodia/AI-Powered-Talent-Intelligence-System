@@ -76,7 +76,6 @@ Data is flattened into tables (resume_core, resume_skills, resume_experience, re
 - Retrieve top N relevant resume sections
 - Aggregate to compute resume-level relevance
 
-
 #### Phase 4: Features Scoring 
 
 - Skill overlap
@@ -88,6 +87,12 @@ Data is flattened into tables (resume_core, resume_skills, resume_experience, re
 
 - Joint evaluation of query + resume
 - Improves contextual understanding and ranking precision
+
+##### Output Scores:
+
+<img width="58" height="320" alt="Screenshot 2026-04-27 at 19 23 42" src="https://github.com/user-attachments/assets/a498c84c-94d1-44bf-89fd-ee19f8d301e0" />
+
+
 
 #### 📊 Candidate Summary & Explainability Layer
 
@@ -115,8 +120,8 @@ This allows recruiters to clearly understand why a candidate is ranked higher or
 Each candidate profile includes:
 
 Strengths - Key areas where the candidate strongly aligns with job requirements (e.g., high-demand skills, relevant experience, domain expertise)
-Gaps - Missing or weaker areas compared to the job description (e.g., skill gaps, insufficient experience in specific domains)
-Matching Evidence - Direct excerpts or references from the resume that justify the identified strengths and gaps
+Gaps - Missing or weaker areas compared to the job description (skill gaps, insufficient experience in specific domains)
+Matching Evidence - Direct references from the resume that justify the identified strengths and gaps
 
 <img width="449" height="403" alt="Screenshot 2026-04-27 at 19 14 54" src="https://github.com/user-attachments/assets/78df1738-62fe-42d7-92a8-1d7fcc183132" />
 
