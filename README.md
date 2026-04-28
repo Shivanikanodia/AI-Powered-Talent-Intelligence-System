@@ -63,8 +63,9 @@ Data is flattened into tables (resume_core, resume_skills, resume_experience, re
 
 #### Phase 2: Embeddings & Indexing:
 
-<img width="622" height="424" alt="Screenshot 2026-04-27 at 19 09 42" src="https://github.com/user-attachments/assets/a183d514-d183-4af1-b980-fce7f6889d37" />
+Resume Chunking - For 500 resumes nearly ~15,000 raw chunks and ~3,400 cleaned chunks.
 
+<img width="622" height="424" alt="Screenshot 2026-04-27 at 19 09 42" src="https://github.com/user-attachments/assets/a183d514-d183-4af1-b980-fce7f6889d37" />
 
 - Section-level embeddings using Sentence-BERT
 - Stored in FAISS for fast similarity search
@@ -89,7 +90,6 @@ Data is flattened into tables (resume_core, resume_skills, resume_experience, re
 - Improves contextual understanding and ranking precision
 
 ##### Output Scores:
-
 
 <img width="559" height="510" alt="Screenshot 2026-04-27 at 19 27 11" src="https://github.com/user-attachments/assets/d7f13914-0d1a-4cec-a474-1786dc3442ad" />
 
@@ -118,11 +118,21 @@ This allows recruiters to clearly understand why a candidate is ranked higher or
 
 #### ✨ Key Output Highlights
 
+The Resume id 44, 52 AND 88 are listed as top ranked with evidences, strengths and gaps.
+
 Each candidate profile includes:
 
 Strengths - Key areas where the candidate strongly aligns with job requirements (e.g., high-demand skills, relevant experience, domain expertise)
+
 Gaps - Missing or weaker areas compared to the job description (skill gaps, insufficient experience in specific domains)
-Matching Evidence - Direct references from the resume that justify the identified strengths and gaps
+
+Matching Evidence - Direct references from the resume that justify the identified strengths and gaps:
+
+#### Query:
+
+
+<img width="454" height="189" alt="Screenshot 2026-04-27 at 19 31 09" src="https://github.com/user-attachments/assets/5111448c-a081-4059-a651-a0ac09508e77" />
+
 
 <img width="449" height="403" alt="Screenshot 2026-04-27 at 19 14 54" src="https://github.com/user-attachments/assets/78df1738-62fe-42d7-92a8-1d7fcc183132" />
 
