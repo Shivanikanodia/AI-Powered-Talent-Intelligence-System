@@ -129,6 +129,8 @@ Matching Evidence - Direct excerpts or references from the resume that justify t
 - 🔁 Consistency & hallucination checks
 - ⚖️ Scoring Approaches Compared
 
+Built 5 benchmarking label  queries to evaluate model performance based on relevance.  
+
 - RAG-only (semantic similarity)
  
 - Cross-encoder
@@ -139,11 +141,13 @@ Matching Evidence - Direct excerpts or references from the resume that justify t
 <img width="478" height="378" alt="Screenshot 2026-04-27 at 19 11 50" src="https://github.com/user-attachments/assets/517cf875-1622-4416-a2ec-7e2ffae1d89f" />
 
 
-Cross-encoder achieves highest precision and ranking quality
-Hybrid model improves over semantic retrieval significantly
-Feature-only model performs weakest - KEY WORD MATCHING (no semantic understanding)
-Semantic-only has good recall but lower ranking precision
-
+- Cross-encoder achieves highest precision and ranking quality
+  
+- Hybrid model improves over semantic retrieval significantly
+  
+-  Feature-only model performs weakest (no semantic understanding)
+  
+-  Semantic-only has good recall but lower ranking precision
 
 
 #### 🛠️ Tech Stack
