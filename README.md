@@ -18,11 +18,17 @@ This system converts unstructured resumes into structured, queryable data and ap
 ### Key Capabilities:
 
 📄 Resume parsing using Databricks AI functions (ai_parse_document, ai_extract)
+
 🔍 Semantic search using Sentence-BERT embeddings + FAISS
+
 🧮 Feature-based scoring (skills, experience, domain, seniority)
+
 🧠 Cross-encoder re-ranking for improved precision
+
 ✨ LLM-generated summaries grounded in retrieved evidence
+
 💬 Natural language querying for recruiter-friendly interaction
+
 📊 Explainable ranking outputs (feature contribution, strengths, gaps)
 
 ### 💼 Business Impact:
