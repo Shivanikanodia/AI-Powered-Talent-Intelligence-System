@@ -94,15 +94,18 @@ Information extraction (ai_extract, 2-pass approach)
 - Matching evidence
 
 #### 📊 Evaluation Metrics:
-⏱️ Latency (retrieval, ranking, generation)
-🎯 Precision@K / Recall@K
-📈 Relevance score (semantic similarity)
-🔁 Consistency & hallucination checks
-⚖️ Scoring Approaches Compared
 
-RAG-only (semantic similarity)
-Cross-encoder + RAG
-Hybrid (Feature scoring + Cross-encoder + RAG) ✅
+- ⏱️ Latency (retrieval, ranking, generation)
+- 🎯 Precision@K / Recall@K
+- 📈 Relevance score (semantic similarity)
+- 🔁 Consistency & hallucination checks
+- ⚖️ Scoring Approaches Compared
+
+- RAG-only (semantic similarity)
+ 
+- Cross-encoder + RAG
+  
+- Hybrid (Feature scoring + Cross-encoder + RAG) ✅
 
 #### 🛠️ Tech Stack
 Python 3.10
