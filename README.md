@@ -7,8 +7,11 @@ An explainable AI system for semantic resume matching, hybrid candidate ranking,
 Traditional Applicant Tracking Systems (ATS):
 
 Rely heavily on keyword matching, missing semantic relevance
+
 Lack transparency in candidate ranking
+
 Require manual resume screening, increasing recruiter effort and inconsistent definition and alignment between HM and roles. 
+
 Provide limited support for analytics and decision insights
 
 ### 💡 Solution Overview:
