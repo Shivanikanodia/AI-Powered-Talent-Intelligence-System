@@ -90,8 +90,8 @@ Data is flattened into tables (resume_core, resume_skills, resume_experience, re
 
 ##### Output Scores:
 
-<img width="58" height="320" alt="Screenshot 2026-04-27 at 19 23 42" src="https://github.com/user-attachments/assets/a498c84c-94d1-44bf-89fd-ee19f8d301e0" /> <img width="215" height="337" alt="Screenshot 2026-04-27 at 19 23 35" src="https://github.com/user-attachments/assets/b02271d1-1a95-457e-afca-8474e3165a60" />
 
+<img width="559" height="510" alt="Screenshot 2026-04-27 at 19 27 11" src="https://github.com/user-attachments/assets/d7f13914-0d1a-4cec-a474-1786dc3442ad" />
 
 
 
@@ -156,13 +156,19 @@ ground_truth_df = pd.DataFrame([
 <img width="478" height="378" alt="Screenshot 2026-04-27 at 19 11 50" src="https://github.com/user-attachments/assets/517cf875-1622-4416-a2ec-7e2ffae1d89f" />
 
 
-- Cross-encoder achieves highest precision and ranking quality
-  
-- Hybrid model improves over semantic retrieval significantly
-  
--  Feature-only model performs weakest (no semantic understanding)
-  
--  Semantic-only has good recall but lower ranking precision
+Recall@10 = 1.0 across all models
+All relevant candidates already present in top-10
+→ Recall is not discriminative in this setup
+
+Cross-Encoder achieves best performance
+Highest NDCG@10 (0.87) → best ranking quality
+Highest MRR (1.0) → top candidate ranked at position 1
+
+Hybrid model improves over semantic ranking
+Precision@5: 0.6 → 0.8
+NDCG@10: 0.62 → 0.69
+→ Feature signals help, but need better weighting
+
 
 
 #### 🛠️ Tech Stack
