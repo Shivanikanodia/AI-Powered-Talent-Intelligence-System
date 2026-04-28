@@ -195,10 +195,15 @@ SQL + Semantic Data Models
 #### 📁 Project Structure
 
 app.py              # Streamlit UI for querying and results
+
 preprocessing.py    # Resume parsing, cleaning, metadata extraction
+
 build_index.py      # Embedding generation and FAISS indexing
+
 config.py           # Configurations and scoring weights
+
 resume_index/       # Stored FAISS index + metadata
+
 data/resumes/       # Sample anonymized resumes
 
 
