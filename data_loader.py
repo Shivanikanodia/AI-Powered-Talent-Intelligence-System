@@ -6,7 +6,7 @@ from typing import Any, List, Tuple
 import pandas as pd
 import streamlit as st
 
-from src.config import EXPERIENCE_PATH, RECRUITER_UI_PATH
+from config import EXPERIENCE_PATH, RECRUITER_UI_PATH
 
 
 def normalize(text: Any) -> str:
