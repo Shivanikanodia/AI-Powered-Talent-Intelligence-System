@@ -90,6 +90,8 @@ Each element represents a piece of the resume and contains:
 
 The parsed JSON is flattened using `explode`, where each element becomes a row in a table.
 
+<img width="457" height="166" alt="Screenshot 2026-05-09 at 23 36 27" src="https://github.com/user-attachments/assets/244eb229-9476-4b30-beec-79ee7cead3ff" />
+
 
 ### Structured Extraction
 
@@ -105,20 +107,15 @@ The parsed JSON is flattened using `explode`, where each element becomes a row i
 
 This converts row-level parsed resume data into a structured candidate profile for querying and analysis.
 
-
-
-### Modeling
-
-The extracted resume data is flattened into analytical tables for efficient querying:
-
 - `resume_core`
 - `resume_skills`
 - `resume_experience`
 - `resume_education`
 
-<img width="547" height="532" alt="Screenshot 2026-04-27 at 18 58 28" src="https://github.com/user-attachments/assets/a46bf4da-9bdf-4e54-8c3a-42ddd715d6b3" />
+<img width="894" height="232" alt="Screenshot 2026-05-09 at 23 36 34" src="https://github.com/user-attachments/assets/6b581e36-04c5-417f-923c-1e3050c1c912" />
 
-### Data Cleaning and Normalization
+
+### Data Cleaning and Normalization:
 
 The system performs:
 
@@ -196,16 +193,21 @@ This improves contextual understanding and ranking precision compared with embed
 The final ranking combines:
 
 - Structured feature score
-- Semantic retrieval score
-- Cross-encoder relevance score
+- Semantic - job_relevance_score
+- Cross-encoder - final_rerank_score
 
 This hybrid approach balances explainability, precision, and semantic relevance.
+
+<img width="512" height="132" alt="Screenshot 2026-05-09 at 23 36 44" src="https://github.com/user-attachments/assets/08bfd310-41f7-4dfe-91a3-f58f7f0a6bdd" />
+
+
+<img width="622" height="424" alt="Screenshot 2026-04-27 at 19 09 42" src="https://github.com/user-attachments/assets/a183d514-d183-4af1-b980-fce7f6889d37" />
 
 ---
 
 # 📊 Candidate Summary & Explainability Layer
 
-The system leverages the Genie interaction layer and an LLM model to generate concise, evidence-based candidate summaries and recruiter recommendations.
+The system leverages the Genie interaction layer at resumes saved in Delta tables & insights and an LLM model to generate concise, evidence-based candidate summaries and recruiter recommendations for frond end streamlit app.
 
 The LLM is used only after scoring and evidence extraction. It does not decide the score.
 
@@ -227,6 +229,9 @@ Candidate ranking is decomposed into interpretable components such as:
 
 This allows recruiters to clearly understand why a candidate is ranked higher or lower.
 
+
+
+
 ---
 
 ## Resume Evidence
@@ -245,6 +250,9 @@ Evidence is backed by explicit references to resume sections such as:
 
 This improves transparency and trust in the recommendation.
 
+
+
+
 ---
 
 ## Hiring Signals & Career Trajectory
@@ -261,6 +269,8 @@ Examples include:
 - Role growth
 - Stability indicators
 
+
+
 ---
 
 ## Recruiter Summaries
@@ -273,7 +283,6 @@ The LLM generates recruiter-friendly summaries that highlight:
 - Suggested screening questions
 
 Instead of keyword filtering, this system enables transparent, evidence-based candidate evaluation.
-
 ---
 
 # 💻 Streamlit App
@@ -284,24 +293,34 @@ The project includes a Streamlit application for recruiter interaction.
 
 Recruiters can enter natural language queries such as:
 
+<img width="2726" height="1134" alt="image" src="https://github.com/user-attachments/assets/da53fe05-1544-4c0f-be79-4ce13e661286" />
+
+
 > Find software engineers in USA with 5 to 13 years of experience and skills Python, Java, and system design.
 
 The recruiter clicks **Run Search** to retrieve ranked candidates.
 
 ---
 
-## Candidate List + Scorecard
+## The app displays:
 
-The app displays:
+- Ranked candidate list and  Overall match score:
 
-- Ranked candidate list
-- Overall match score
 - Feature-level scorecard
-- Strengths and gaps
+
+  <img width="2670" height="858" alt="image" src="https://github.com/user-attachments/assets/3d26e6bb-c3de-4503-b027-daad1d553290" />
+
 - Resume evidence
+
+  <img width="2728" height="1000" alt="image" src="https://github.com/user-attachments/assets/b7c5bdfd-06b7-4e5b-9a34-6bd6fab57e20" />
+
 - Career trajectory insights
-- Recruiter-facing summary
-- Suggested screening question
+
+<img width="2782" height="1114" alt="image" src="https://github.com/user-attachments/assets/d167e645-0476-4e6f-a0e5-effc87f09530" />
+
+- Recruiter-facing summary and  Suggested screening question
+
+<img width="1084" height="1082" alt="image" src="https://github.com/user-attachments/assets/0cca43de-70da-46ed-bdba-aaffea8bd252" />
 
 ---
 
@@ -313,7 +332,6 @@ The system is evaluated using ranking quality, latency, and factual consistency 
 
 - ⏱️ Latency for retrieval, ranking, and generation
 - 🎯 Precision@K
-- 🎯 Recall@K
 - 📈 NDCG@K
 - 🥇 MRR@K
 - 🔁 Consistency checks
@@ -355,7 +373,10 @@ The following ranking approaches were benchmarked:
 
 ---
 
-## Evaluation Results Summary
+## Evaluation Results Summary:
+
+
+<img width="478" height="378" alt="Screenshot 2026-04-27 at 19 11 50" src="https://github.com/user-attachments/assets/517cf875-1622-4416-a2ec-7e2ffae1d89f" />
 
 The cross-encoder achieved the strongest ranking quality, with the highest NDCG and MRR values.
 
