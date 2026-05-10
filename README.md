@@ -414,9 +414,13 @@ The hybrid model improved over semantic search by combining multiple ranking sig
 
 ## Run instructions :
 git clone https://github.com/Shivanikanodia/AI-Powered-Intelligent-Recruiter-Assistant.git
-cd 
+
+cd intelligent-recruiter-ai
+
 pip install -r requirements.txt
+
 streamlit run app.py
+
 
 # 🛠️ Tech Stack
 
