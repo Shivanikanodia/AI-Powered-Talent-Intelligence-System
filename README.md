@@ -170,6 +170,9 @@ For approximately 500 resumes:
 - Around 15,000 raw chunks were generated
 - Around 3,400 cleaned chunks were retained after preprocessing
 
+<img width="1244" height="848" alt="image" src="https://github.com/user-attachments/assets/e201df88-541a-4ed3-bd85-e5caacc6e367" />
+
+
 ### Semantic Search
 
 The system uses section-level embeddings with Sentence-BERT.
@@ -199,9 +202,6 @@ The final ranking combines:
 This hybrid approach balances explainability, precision, and semantic relevance.
 
 <img width="512" height="132" alt="Screenshot 2026-05-09 at 23 36 44" src="https://github.com/user-attachments/assets/08bfd310-41f7-4dfe-91a3-f58f7f0a6bdd" />
-
-
-<img width="622" height="424" alt="Screenshot 2026-04-27 at 19 09 42" src="https://github.com/user-attachments/assets/a183d514-d183-4af1-b980-fce7f6889d37" />
 
 ---
 
