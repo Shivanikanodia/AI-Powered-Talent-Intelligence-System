@@ -304,21 +304,24 @@ The recruiter clicks **Run Search** to retrieve ranked candidates.
 
 ## The app displays:
 
-- Ranked candidate list and  Overall match score:
+#### Ranked candidate list and  Overall match score:
 
-- Feature-level scorecard
+<img width="1409" height="481" alt="Screenshot 2026-05-09 at 23 45 35" src="https://github.com/user-attachments/assets/e94f8ac9-ce24-4c48-bfbc-f555c8cea6d1" />
+
+
+#### Feature-level scorecard
 
   <img width="2670" height="858" alt="image" src="https://github.com/user-attachments/assets/3d26e6bb-c3de-4503-b027-daad1d553290" />
 
-- Resume evidence
+#### Resume evidence
 
   <img width="2728" height="1000" alt="image" src="https://github.com/user-attachments/assets/b7c5bdfd-06b7-4e5b-9a34-6bd6fab57e20" />
 
-- Career trajectory insights
+#### Career trajectory insights
 
 <img width="2782" height="1114" alt="image" src="https://github.com/user-attachments/assets/d167e645-0476-4e6f-a0e5-effc87f09530" />
 
-- Recruiter-facing summary and  Suggested screening question
+#### Recruiter-facing summary and  Suggested screening question
 
 <img width="1084" height="1082" alt="image" src="https://github.com/user-attachments/assets/0cca43de-70da-46ed-bdba-aaffea8bd252" />
 
