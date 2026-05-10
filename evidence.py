@@ -2,8 +2,8 @@ from typing import Any, Dict, List
 
 import pandas as pd
 
-from src.data_loader import normalize
-from src.scoring import skill_variants
+from data_loader import normalize
+from scoring import skill_variants
 
 
 def experience_profile(exp_rows: pd.DataFrame) -> Dict[str, Any]:
