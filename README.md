@@ -389,6 +389,35 @@ The hybrid model improved over semantic search by combining multiple ranking sig
 
 ---
 
+# 📁 Project Structure
+
+```text
+├── app.py
+├── requirements.txt
+├── README.md
+
+├── data/
+│   ├── recruiter_ui.csv
+│   └── resume_experience.csv
+
+├── src/
+│   ├── config.py
+│   ├── data_loader.py
+│   ├── parse.py
+│   ├── scoring.py
+│   ├── evidence.py
+│   ├── recommendation.py
+│   └── ui_components.py
+
+```
+---
+
+## Run instructions :
+git clone https://github.com/Shivanikanodia/AI-Powered-Intelligent-Recruiter-Assistant.git
+cd 
+pip install -r requirements.txt
+streamlit run app.py
+
 # 🛠️ Tech Stack
 
 - Python 3.10
@@ -404,39 +433,8 @@ The hybrid model improved over semantic search by combining multiple ranking sig
 - Pandas
 - NumPy
 
----
-
-# 📁 Project Structure
-
-```text
-.
-├── app.py                 # Streamlit UI for querying and results
-├── preprocessing.py       # Resume parsing, cleaning, and metadata extraction
-├── build_index.py         # Embedding generation and FAISS indexing
-├── config.py              # Configuration values and scoring weights
-├── requirements.txt       # Python dependencies
-├── README.md              # Project documentation
-└── data/                  # Resume data or sample input files
-```
-
----
-
-# ✅ Implemented
-
-- Resume preprocessing
-- Databricks-based parsing and extraction
-- Structured resume tables
-- Skill normalization and ontology mapping
-- Semantic retrieval using FAISS
-- Feature-based scoring
-- Cross-encoder re-ranking
-- Hybrid ranking
-- Explainability outputs
-- Evidence-grounded recruiter summaries
-- Streamlit recruiter interface
-- Benchmarking of RAG-only, cross-encoder, and hybrid approaches
-
----
+### For AI recommendation:
+ollama run llama3
 
 # 🔮 Future Work
 
