@@ -4,11 +4,11 @@ from typing import Any, Dict, List, Tuple
 import pandas as pd
 import streamlit as st
 
-from src.data_loader import load_data
-from src.evidence import experience_profile
-from src.nl_parser import apply_natural_language_search
-from src.scoring import compute_match_features, role_matches, search_blob
-from src.ui_components import (
+from data_loader import load_data
+from evidence import experience_profile
+from nl_parser import apply_natural_language_search
+from scoring import compute_match_features, role_matches, search_blob
+from ui_components import (
     build_scorecard,
     render_candidate,
     render_hero,
