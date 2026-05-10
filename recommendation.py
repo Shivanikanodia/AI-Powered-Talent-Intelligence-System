@@ -3,7 +3,7 @@ from typing import Any, Dict, List
 import pandas as pd
 import requests
 
-from src.config import DEFAULT_MODEL, OLLAMA_URL
+from config import DEFAULT_MODEL, OLLAMA_URL
 
 
 def call_ollama(prompt: str) -> str:
