@@ -86,7 +86,10 @@ Each element represents a piece of the resume and contains:
 - Bounding box, representing the position of the element on the page
 - Additional layout metadata
 
+- <img width="783" height="66" alt="Screenshot 2026-04-27 at 19 06 07" src="https://github.com/user-attachments/assets/62076fa3-5efe-4a1e-8983-be1e5cde47df" />
+
 The parsed JSON is flattened using `explode`, where each element becomes a row in a table.
+
 
 ### Structured Extraction
 
@@ -102,6 +105,8 @@ The parsed JSON is flattened using `explode`, where each element becomes a row i
 
 This converts row-level parsed resume data into a structured candidate profile for querying and analysis.
 
+
+
 ### Modeling
 
 The extracted resume data is flattened into analytical tables for efficient querying:
@@ -111,7 +116,7 @@ The extracted resume data is flattened into analytical tables for efficient quer
 - `resume_experience`
 - `resume_education`
 
-<img width="783" height="66" alt="Screenshot 2026-04-27 at 19 06 07" src="https://github.com/user-attachments/assets/62076fa3-5efe-4a1e-8983-be1e5cde47df" />
+<img width="547" height="532" alt="Screenshot 2026-04-27 at 18 58 28" src="https://github.com/user-attachments/assets/a46bf4da-9bdf-4e54-8c3a-42ddd715d6b3" />
 
 ### Data Cleaning and Normalization
 
@@ -125,6 +130,8 @@ The system performs:
 - Ontology-based mapping
 
 This helps standardize variations such as `ML`, `Machine Learning`, and `machine-learning` into consistent skill representations.
+
+<img width="729" height="195" alt="Screenshot 2026-04-27 at 19 07 41" src="https://github.com/user-attachments/assets/ca868aa9-845f-4b5b-aaa3-b390387b11a2" />
 
 ---
 
