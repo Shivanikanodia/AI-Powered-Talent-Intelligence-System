@@ -111,6 +111,8 @@ The extracted resume data is flattened into analytical tables for efficient quer
 - `resume_experience`
 - `resume_education`
 
+<img width="783" height="66" alt="Screenshot 2026-04-27 at 19 06 07" src="https://github.com/user-attachments/assets/62076fa3-5efe-4a1e-8983-be1e5cde47df" />
+
 ### Data Cleaning and Normalization
 
 The system performs:
