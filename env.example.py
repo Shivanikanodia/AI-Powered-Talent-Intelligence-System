@@ -1,0 +1,10 @@
+DATA_DIR=.
+RECRUITER_UI_PATH=recruiter_ui.csv
+EXPERIENCE_PATH=resume_experience.csv
+
+SCORING_JOB_ID=
+GENIE_SPACE_ID=
+DATABRICKS_HTTP_PATH=
+
+OLLAMA_MODEL=llama3
+OLLAMA_URL=http://localhost:11434/api/generate

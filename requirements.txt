@@ -1,0 +1,8 @@
+streamlit
+pandas
+databricks-sql-connector
+databricks-sdk
+pyarrow
+python-dotenv
+sentence-transformers
+faiss-cpu
