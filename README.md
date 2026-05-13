@@ -62,9 +62,45 @@ The system follows a hybrid architecture:
 
 ---
 
+# Dataset
+
+Over 2,000 resumes collected from Kaggle, LinkedIn, and X-Ray Search
+Roles included:
+Data Scientist
+Data Analyst
+Software Engineer
+Profiles across multiple experience levels and countries including the USA, UK, Australia, and India
+Resume formats included highly unstructured layouts with tables, columns, and varying section structures
+
+--- 
+
 # 🔍 Data Pipeline
 
-## Phase 1: Resume Processing & Structuring
+## Phase 1: System Architecture and Data Modeling
+
+The data pipeline follows a Medallion Architecture consisting of:
+
+Raw Layer- Stores parsed resume documents extracted from PDFs using AI_PARSE_DOCUMENT
+Processed Layer - Performs schema extraction, normalization, ontology mapping, abbreviation handling, and synonym standardization
+Gold Layer- Stores analytics-ready candidate entities and semantic matching outputs
+
+This layered architecture improves scalability, modularity, and maintainability of the pipeline.
+
+Dimensional Data Modeling:
+
+A candidate-centric dimensional model was designed using structured entities such as:
+
+Candidate Profile
+Resume Master
+Skills
+Education
+Experience
+Embeddings
+Ranking Scores
+
+The model supports semantic retrieval, feature engineering, and explainable candidate ranking.
+
+## Phase 2: Resume Processing & Structuring
 
 The pipeline transforms unstructured resume PDFs into structured data using Databricks AI functions.
 
