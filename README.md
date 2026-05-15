@@ -363,6 +363,16 @@ The recruiter clicks **Run Search** to retrieve ranked candidates.
 
 ---
 
+### Unity Catalog and Genie integration to support recruiter insights, semantic querying, and analytics-driven candidate evaluation. 
+
+
+<img width="751" height="275" alt="Screenshot 2026-05-15 at 13 00 16" src="https://github.com/user-attachments/assets/554926fa-d0f5-4ed5-a085-03e9ed6c68de" />
+
+
+<img width="810" height="321" alt="Screenshot 2026-05-15 at 13 00 35" src="https://github.com/user-attachments/assets/62ac8775-20e3-4bf4-a3ee-93f81e36c751" />
+
+
+
 # 📊 Evaluation Metrics
 
 The system is evaluated using ranking quality, latency, and factual consistency metrics.
