@@ -1,4 +1,4 @@
-# 🧠 AI-Powered Intelligent Recruiter Assistant
+# 🧠 AI-Powered Talent Intelligence System
 
 An explainable AI system for semantic resume matching, hybrid candidate ranking, and recruiter-facing insights — designed to reduce manual screening effort and time-to-fill, eliminate keyword bias, and improve quality of hire.
 
