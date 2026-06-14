@@ -363,7 +363,7 @@ The recruiter clicks **Run Search** to retrieve ranked candidates.
 
 ---
 
-### UGenie integration to support recruiter insights and analytics-driven candidate evaluation. 
+### Genie integration to support recruiter insights and analytics-driven candidate evaluation. 
 
 
 <img width="751" height="275" alt="Screenshot 2026-05-15 at 13 00 16" src="https://github.com/user-attachments/assets/554926fa-d0f5-4ed5-a085-03e9ed6c68de" />
