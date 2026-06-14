@@ -243,7 +243,7 @@ This hybrid approach balances explainability, precision, and semantic relevance.
 
 # 📊 Candidate Summary & Explainability Layer
 
-The system leverages the Genie interaction layer at resumes saved in Delta tables & insights and an LLM model to generate concise, evidence-based candidate summaries and recruiter recommendations for frond end streamlit app.
+The system leverages the Genie interaction layer at resumes saved in Delta tables and LLM model to generate concise, evidence-based candidate summaries and recruiter recommendations for frond end streamlit app.
 
 The LLM is used only after scoring and evidence extraction. It does not decide the score.
 
@@ -363,7 +363,7 @@ The recruiter clicks **Run Search** to retrieve ranked candidates.
 
 ---
 
-### Unity Catalog and Genie integration to support recruiter insights, semantic querying, and analytics-driven candidate evaluation. 
+### UGenie integration to support recruiter insights and analytics-driven candidate evaluation. 
 
 
 <img width="751" height="275" alt="Screenshot 2026-05-15 at 13 00 16" src="https://github.com/user-attachments/assets/554926fa-d0f5-4ed5-a085-03e9ed6c68de" />
