@@ -206,8 +206,6 @@ For approximately 500 resumes:
 - Around 15,000 raw chunks were generated
 - Around 3,400 cleaned chunks were retained after preprocessing
 
-<img width="1244" height="848" alt="image" src="https://github.com/user-attachments/assets/e201df88-541a-4ed3-bd85-e5caacc6e367" />
-
 
 ### Semantic Search
 
