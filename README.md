@@ -348,12 +348,6 @@ The recruiter clicks **Run Search** to retrieve ranked candidates.
 
 ---
 
-### Genie integration to support talent insights and analytics driven candidate recommendation
-
-
-
-
-
 # 📊 Evaluation Metrics
 
 The system is evaluated using ranking quality, latency, and factual consistency metrics.
