@@ -1,7 +1,9 @@
 # 🧠 AI-Powered Talent Intelligence System
 
-An explainable AI system for semantic resume matching, transparent talent ranking and recruiter facing hiring insights,  designed to reduce manual screening effort and time to source and screen. It eliminate keyword bias  and improves quality of hire.
-The system also provides talent insights like canddiate distribution by experience, location and salary expectation by Geography, job role and Industry type. 
+
+To develop an explainable AI system for semantic resume matching, transparent talent ranking, and recruiter-facing hiring insights that reduces manual screening effort and shortens sourcing and screening time. 
+The system aims to minimize keyword-based bias, improve candidate-job fit, and enhance quality of hire by using semantic understanding and evidence-based ranking. 
+It also provides talent market insights, including candidate distribution by experience, location, salary expectations, geography, job role, and industry type, enabling recruiters to make faster, fairer, and data-driven hiring decisions.
 
 ---
 
