@@ -434,8 +434,11 @@ The hybrid model improved over semantic search by combining multiple ranking sig
 
 ## Run instructions :
 git clone https://github.com/Shivanikanodia/AI-Powered-Talent-Intelligence-System.git
+
 cd AI-Powered-Talent-Intelligence-System
+
 pip install -r requirements.txt
+
 streamlit run app.py
 
 # 🛠️ Tech Stack
