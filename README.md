@@ -1,6 +1,7 @@
 # 🧠 AI-Powered Talent Intelligence System
 
-An explainable AI system for semantic resume matching, hybrid candidate ranking, and recruiter-facing insights — designed to reduce manual screening effort and time-to-fill, eliminate keyword bias, and improve quality of hire.
+An explainable AI system for semantic resume matching, transparent talent ranking and recruiter facing hiring insights,  designed to reduce manual screening effort and time to source and screen. It eliminate keyword bias  and improves quality of hire.
+The system also provides talent insights like canddiate distribution by experience, location and salary expectation by Geography, job role and Industry type. 
 
 ---
 
@@ -10,38 +11,37 @@ Traditional Applicant Tracking Systems (ATS) often:
 
 - Rely heavily on keyword matching, missing semantic relevance.
 - Lack transparency in candidate ranking.
-- Require manual resume screening, increasing recruiter effort.
-- Create inconsistent definitions and alignment between hiring managers and roles.
-- Provide limited support for analytics and decision insights.
+- Require manual resume screening and increasing recruiter effort.
+- Create inconsistent definitions and alignment between hiring managers expectations and roles.
+- Provide limited support for talent analytics and decision insights.
 
 ---
 
 ## 💡 Solution Overview
 
 This system converts unstructured resumes into structured, queryable data and applies hybrid retrieval + re-ranking to identify the most relevant candidates.
-
-The solution combines semantic search, structured feature scoring, cross-encoder re-ranking, and evidence-grounded LLM summaries to help recruiters evaluate candidates transparently and consistently.
+The solution combines semantic search, structured feature scoring, cross-encoder re-ranking, and evidence grounded LLM summaries and self service insights to help recruiters evaluate candidates transparently and consistently.
 
 ---
 
 ## 🔑 Key Capabilities
 
 - 📄 Resume parsing using Databricks AI functions: `ai_parse_document` and `ai_extract`
-- 🧮 Feature-based scoring for skills, experience, domain, seniority, education, and location
-- 🔍 Semantic search using Sentence-BERT embeddings and FAISS
-- 🧠 Cross-encoder re-ranking for improved precision
-- ✨ LLM-generated summaries grounded in retrieved resume evidence
-- 💬 Natural language querying for recruiter-friendly interaction
-- 📊 Explainable ranking outputs with feature contribution, strengths, gaps, and resume evidence
+- 🧮 Feature based scoring for skills match, experience fit, domain alignment, seniority fit, and location
+- 🔍 Semantic search using Sentence BERT embeddings and FAISS VectorDB
+- 🧠 Cross-encoder re-ranking for improved precision and contextual relevance
+- ✨ LLM generated summaries grounded in retrieved and cleaned resume evidence
+- 💬 Natural language querying for recruiter friendly interaction with streamlit interface and Genie
+- 📊 Explainable ranking outputs with feature contribution, strengths, gaps and resume evidence
 
 ---
 
 ## 💼 Business Impact
 
 - ⏱️ Reduces resume screening time significantly
-- 🎯 Improves candidate quality through context-aware matching
+- 🎯 Improves candidate quality and discovery through context aware matching
 - 🤝 Enhances recruiter trust with explainable AI outputs
-- 📊 Supports structured hiring decisions using transparent scoring and evidence
+- 📊 Supports structured hiring decisions using transparent talent profile scoring, evidences, bais aware comparision and compensation benchmarking 
 
 ---
 
@@ -51,24 +51,25 @@ The system follows a hybrid architecture:
 
 1. Resume ingestion and parsing
 2. Resume structuring and normalization
-3. Feature scoring
+3. Feature engineering
 4. Semantic embedding generation
-5. FAISS-based retrieval
-6. Cross-encoder re-ranking
-7. Candidate-level aggregation
-8. Evidence extraction
-9. LLM-generated recruiter summaries
-10. Streamlit-based recruiter interface
+5. FAISS based retrieval
+6. Cross encoder re-ranking
+8. Evidence extraction (skills, responsbililities, domain, experience, location and salary)
+9. LLM generated recruiter summaries
+10. Streamlit based recruiter interface
 
 ---
 
 # Dataset
 
-Over 2,000 resumes collected from Kaggle, LinkedIn, and X-Ray Search
+Over 2,000 resumes collected from Kaggle, LinkedIn, and X-Ray Search.
+
 Roles included:
 Data Scientist
 Data Analyst
 Software Engineer
+
 Profiles across multiple experience levels and countries including the USA, UK, Australia, and India
 Resume formats included highly unstructured layouts with tables, columns, and varying section structures
 
@@ -81,10 +82,10 @@ Resume formats included highly unstructured layouts with tables, columns, and va
 The data pipeline follows a Medallion Architecture consisting of:
 
 Raw Layer- Stores parsed resume documents extracted from PDFs using AI_PARSE_DOCUMENT
-Processed Layer - Performs schema extraction, normalization, ontology mapping, abbreviation handling, and synonym standardization
-Gold Layer- Stores analytics-ready candidate entities and semantic matching outputs
+Processed Layer - Performs schema extraction, text normalization and cleaning, data standardisation, abbreviation handling, and ontology mapping. 
+Gold Layer- Stores analytics ready candidate entities and semantic matching outputs. 
 
-This layered architecture improves scalability, modularity, and maintainability of the pipeline.
+This layered architecture improves scalability, lineage, auditing, and maintainability of the pipeline.
 
 Dimensional Data Modeling:
 
@@ -98,8 +99,6 @@ Experience
 Embeddings
 Ranking Scores
 
-The model supports semantic retrieval, feature engineering, and explainable candidate ranking.
-
 ## Phase 2: Resume Processing & Structuring
 
 The pipeline transforms unstructured resume PDFs into structured data using Databricks AI functions.
@@ -112,7 +111,7 @@ Resumes are read from a Unity Catalog Volume using `read_files`.
 
 ### Parsing
 
-`ai_parse_document` converts PDFs into structured JSON while preserving layout. Each resume is broken into smaller blocks called elements.
+`ai_parse_document` converts PDFs into un-structured Semi-JSON while preserving layout. Each resume is broken into smaller blocks called elements.
 
 Each element represents a piece of the resume and contains:
 
@@ -127,7 +126,6 @@ Each element represents a piece of the resume and contains:
 The parsed JSON is flattened using `explode`, where each element becomes a row in a table.
 
 <img width="457" height="166" alt="Screenshot 2026-05-09 at 23 36 27" src="https://github.com/user-attachments/assets/244eb229-9476-4b30-beec-79ee7cead3ff" />
-
 
 ### Structured Extraction
 
@@ -174,14 +172,13 @@ The system computes lightweight structured features to measure candidate fit aga
 
 Feature scores include:
 
-- Skill overlap
 - Experience alignment
-- Domain relevance
+- Skills match
 - Seniority fit
 - Education alignment
 - Location match
 
-Weights are assigned based on hiring criteria, and the system returns a final structured feature score.
+Weights are assigned based on hiring criteria for different requirements, and the system returns a final structured feature score.
 
 Example scoring components:
 
@@ -206,24 +203,23 @@ For approximately 500 resumes:
 - Around 15,000 raw chunks were generated
 - Around 3,400 cleaned chunks were retained after preprocessing
 
-
 ### Semantic Search
 
-The system uses section-level embeddings with Sentence-BERT.
+The system uses section-level embeddings with Sentence BERT.
 
 The workflow includes:
 
-1. Generate embeddings for cleaned resume sections
+1. Generate embeddings for resume sections
 2. Store embeddings in a FAISS index
 3. Convert recruiter query into an embedding
 4. Retrieve top-N relevant resume sections
-5. Aggregate section-level results into resume-level relevance
+5. Aggregate section level results into resume level relevance and generates job_relevance_score
 
 ### Cross-Encoder Re-Ranking
 
-A cross-encoder evaluates the recruiter query and resume section jointly.
+A cross-encoder evaluates the recruiter query and resume section jointly on TOP 100 Chunks for semantic matching step.
 
-This improves contextual understanding and ranking precision compared with embedding similarity alone.
+This improves contextual understanding and ranking precision compared with embedding similarity alone and returns fina_rerank_score.
 
 ### Hybrid Ranking
 
@@ -241,7 +237,7 @@ This hybrid approach balances explainability, precision, and semantic relevance.
 
 # 📊 Candidate Summary & Explainability Layer
 
-The system leverages the Genie interaction layer at resumes saved in Delta tables and LLM model to generate concise, evidence-based candidate summaries and recruiter recommendations for frond end streamlit app.
+The system leverages the Genie interaction layer for resumes saved in Delta tables and use LLM model with controlled prompt engineering to generate concise, evidence based candidate summaries and recruiter recommendations for frond end streamlit app.
 
 The LLM is used only after scoring and evidence extraction. It does not decide the score.
 
@@ -258,22 +254,16 @@ Candidate ranking is decomposed into interpretable components such as:
 - Domain fit
 - Location match
 - Education relevance
-- Career trajectory
-- Resume evidence
+- Career trajectory signals
 
 This allows recruiters to clearly understand why a candidate is ranked higher or lower.
-
-
-
 
 ---
 
 ## Resume Evidence
 
 Evidence of skills and experience is generated using only the most relevant retrieved resume segments through semantic search and cross-encoder re-ranking.
-
 Every statement is traceable to source data.
-
 Evidence is backed by explicit references to resume sections such as:
 
 - Experience
@@ -284,15 +274,11 @@ Evidence is backed by explicit references to resume sections such as:
 
 This improves transparency and trust in the recommendation.
 
-
-
-
 ---
 
 ## Hiring Signals & Career Trajectory
 
 Recruiters also care about stability and growth.
-
 The system calculates hiring signals from work history rather than generating them through the LLM.
 
 Examples include:
@@ -303,8 +289,6 @@ Examples include:
 - Role growth
 - Stability indicators
 
-
-
 ---
 
 ## Recruiter Summaries
@@ -313,7 +297,6 @@ The LLM generates recruiter-friendly summaries that highlight:
 
 - Candidate strengths
 - Candidate gaps
-- Evidence-backed fit assessment
 - Suggested screening questions
 
 Instead of keyword filtering, this system enables transparent, evidence-based candidate evaluation.
@@ -361,13 +344,9 @@ The recruiter clicks **Run Search** to retrieve ranked candidates.
 
 ---
 
-### Genie integration to support recruiter insights and analytics-driven candidate evaluation. 
+### Genie integration to support talent insights and analytics driven candidate recommendation
 
 
-<img width="751" height="275" alt="Screenshot 2026-05-15 at 13 00 16" src="https://github.com/user-attachments/assets/554926fa-d0f5-4ed5-a085-03e9ed6c68de" />
-
-
-<img width="810" height="321" alt="Screenshot 2026-05-15 at 13 00 35" src="https://github.com/user-attachments/assets/62ac8775-20e3-4bf4-a3ee-93f81e36c751" />
 
 
 
@@ -377,7 +356,6 @@ The system is evaluated using ranking quality, latency, and factual consistency 
 
 ## Metrics Used
 
-- ⏱️ Latency for retrieval, ranking, and generation
 - 🎯 Precision@K
 - 📈 NDCG@K
 - 🥇 MRR@K
@@ -484,10 +462,8 @@ ollama run llama3
 
 - MLflow-based evaluation and experiment tracking
 - Responsible AI safeguards
-- Bias checks
 - Prompt injection handling
 - Expanded benchmarking dataset
-- Additional recruiter analytics dashboards
 - Improved skill ontology and taxonomy mapping
 
 ---
