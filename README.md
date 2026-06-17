@@ -287,11 +287,12 @@ The system calculates hiring signals from work history rather than generating th
 
 Examples include:
 
-- Average tenure
-- Employer transitions
-- Career progression
-- Role growth
+- Average tenure per employee
+- Total Employer transitions in entire career trajectory
+- Career progression and promotions
 - Stability indicators
+
+These metric offers insights into a candidate's job stability and can be an important factor in evaluating their career consistency and loyalty to employers. Understanding job tenure can help organizations predict future employee retention and assess how reliable a candidate might be in long-term roles.
 
 ---
 
