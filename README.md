@@ -304,49 +304,22 @@ The LLM generates recruiter-friendly summaries that highlight:
 - Candidate gaps
 - Suggested screening questions
 
-Instead of keyword filtering, this system enables transparent, evidence-based candidate evaluation.
----
-
-# 💻 Streamlit App
-
-The project includes a Streamlit application for recruiter interaction.
-
-## Natural Language Search Interface
-
-Recruiters can enter natural language queries such as:
-
-<img width="2726" height="1134" alt="image" src="https://github.com/user-attachments/assets/da53fe05-1544-4c0f-be79-4ce13e661286" />
-
-
-> Find software engineers in USA with 5 to 13 years of experience and skills Python, Java, and system design.
-
-The recruiter clicks **Run Search** to retrieve ranked candidates.
+Instead of keyword filtering, this system enables transparent, evidence based candidate evaluation.
 
 ---
+
 
 ## The app displays:
 
-#### Ranked candidate list and  Overall match score:
+###### Ranked candidate list and  Overall match score:
 
-<img width="1409" height="481" alt="Screenshot 2026-05-09 at 23 45 35" src="https://github.com/user-attachments/assets/e94f8ac9-ce24-4c48-bfbc-f555c8cea6d1" />
+###### Feature-level scorecard
 
+###### Resume evidence
 
-#### Feature-level scorecard
+###### Career trajectory insights
 
-  <img width="2670" height="858" alt="image" src="https://github.com/user-attachments/assets/3d26e6bb-c3de-4503-b027-daad1d553290" />
-
-#### Resume evidence
-
-  <img width="2728" height="1000" alt="image" src="https://github.com/user-attachments/assets/b7c5bdfd-06b7-4e5b-9a34-6bd6fab57e20" />
-
-#### Career trajectory insights
-
-<img width="2782" height="1114" alt="image" src="https://github.com/user-attachments/assets/d167e645-0476-4e6f-a0e5-effc87f09530" />
-
-#### Recruiter-facing summary and  Suggested screening question
-
-<img width="1084" height="1082" alt="image" src="https://github.com/user-attachments/assets/0cca43de-70da-46ed-bdba-aaffea8bd252" />
-
+###### Recruiter-facing summary and  Suggested screening question
 ---
 
 # 📊 Evaluation Metrics
