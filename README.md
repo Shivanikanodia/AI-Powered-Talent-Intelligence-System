@@ -126,8 +126,6 @@ Each element represents a piece of the resume and contains:
 
 The parsed JSON is flattened using `explode`, where each element becomes a row in a table.
 
-<img width="457" height="166" alt="Screenshot 2026-05-09 at 23 36 27" src="https://github.com/user-attachments/assets/244eb229-9476-4b30-beec-79ee7cead3ff" />
-
 ### Structured Extraction
 
 `ai_extract` is used with a defined schema to extract consistent candidate profile fields such as:
@@ -146,8 +144,6 @@ This converts row-level parsed resume data into a structured candidate profile f
 - `resume_skills`
 - `resume_experience`
 - `resume_education`
-
-<img width="894" height="232" alt="Screenshot 2026-05-09 at 23 36 34" src="https://github.com/user-attachments/assets/6b581e36-04c5-417f-923c-1e3050c1c912" />
 
 
 ### Data Cleaning and Normalization:
