@@ -1,40 +1,37 @@
 # 🧠 AI-Powered Talent Intelligence System
 
 
-To develop an explainable AI system for semantic resume matching, transparent talent ranking, and recruiter-facing hiring insights that reduces manual screening effort and shortens sourcing and screening time. 
-
-The system aims to minimize keyword-based bias, improve candidate-job fit, and enhance quality of hire by using semantic understanding and evidence-based ranking. 
-
-It also provides talent market insights, including candidate distribution by experience, location, salary expectations, geography, job role, and industry type, enabling recruiters to make faster, fairer, and data-driven hiring decisions.
-
+An explainable AI system for semantic resume search, contexual workforce relevance, identify temporal trends and generate recruite insights reducing manual screening effort and minimize sourcing time. 
+The system aims to minimize keyword based bias, improve candidate discovery, and enhance quality of hire by identifying early indicators in the talent acquisition process that may correlate with future retention or attrition.
+It provides a lakehouse which combines proactive talent retention and compensation insights at fingertip and capabilities to directly interact with Hiring Stakeholders and build talent pipeline by weighting trade offs.  
 ---
 
 ## 🚀 Business Problem
 
 Traditional Applicant Tracking Systems (ATS) often:
 
-- Rely heavily on keyword matching, missing semantic relevance.
-- Lack transparency in candidate ranking.
-- Require manual resume screening and increasing recruiter effort.
-- Create inconsistent definitions and alignment between hiring managers expectations and roles.
+- Rely heavily on keyword matching and missing semantic relevance.
+- Lack transparency in candidate ranking and why someone sits at position 1
+- Require manual resume screening and increase in recruiter effort.
+- Inconsistent alignment between hiring managers expectations and roles.
 - Provide limited support for talent analytics and decision insights.
 
 ---
 
 ## 💡 Solution Overview
 
-This system converts unstructured resumes into structured, queryable data and applies hybrid retrieval + re-ranking to identify the most relevant candidates.
-The solution combines semantic search, structured feature scoring, cross-encoder re-ranking, and evidence grounded LLM summaries and self service insights to help recruiters evaluate candidates transparently and consistently.
+This system converts unstructured resumes into structured, queryable data and applies hybrid retrieval + re-ranking to identify the most relevant profiles in position first, second and third. 
+The solution combines semantic search, structured feature scoring, cross-encoder re-ranking, evidence grounded LLM summaries and self-service insights to help recruiters evaluate candidates transparently and much faster.
 
 ---
 
 ## 🔑 Key Capabilities
 
 - 📄 Resume parsing using Databricks AI functions: `ai_parse_document` and `ai_extract`
-- 🧮 Feature based scoring for skills match, experience fit, domain alignment, seniority fit, and location
+- 🧮 Feature based scoring for skills match, experience fit, domain alignment, seniority fit, and location. 
 - 🔍 Semantic search using Sentence BERT embeddings and FAISS VectorDB
 - 🧠 Cross-encoder re-ranking for improved precision and contextual relevance
-- ✨ LLM generated summaries grounded in retrieved and cleaned resume evidence
+- ✨ LLM generated summaries grounded in resume data 
 - 💬 Natural language querying for recruiter friendly interaction with streamlit interface and Genie
 - 📊 Explainable ranking outputs with feature contribution, strengths, gaps and resume evidence
 
@@ -44,8 +41,8 @@ The solution combines semantic search, structured feature scoring, cross-encoder
 
 - ⏱️ Reduces resume screening time significantly
 - 🎯 Improves candidate quality and discovery through context aware matching
-- 🤝 Enhances recruiter trust with explainable AI outputs
-- 📊 Supports structured hiring decisions using transparent talent profile scoring, evidences, bais aware comparision and compensation benchmarking 
+- 🤝 Enhances recruiter trust with explainable retention and career progression outputs
+- 📊 Supports structured hiring decisions using evidences and compensation benchmarking 
 
 ---
 
@@ -172,7 +169,7 @@ This helps standardize variations such as `ML`, `Machine Learning`, and `machine
 
 ## Phase 2: Feature Scoring
 
-The system computes lightweight structured features to measure candidate fit against a recruiter query or job requirement.
+The system computes lightweight structured features to measure candidate against a recruiter query.
 
 Feature scores include:
 
@@ -182,17 +179,7 @@ Feature scores include:
 - Education alignment
 - Location match
 
-Weights are assigned based on hiring criteria for different requirements, and the system returns a final structured feature score.
-
-Example scoring components:
-
-- `must_have_skill_coverage`
-- `experience_fitment`
-- `domain_fit`
-- `location_match`
-- `education_relevance`
-
-This provides interpretable signals before applying semantic ranking or LLM summarization.
+Weights are assigned based on hiring criteria for different requirements, and the system returns a final structured feature score. This provides interpretable signals before applying semantic ranking or LLM summarization.
 
 ---
 
@@ -222,7 +209,6 @@ The workflow includes:
 ### Cross-Encoder Re-Ranking
 
 A cross-encoder evaluates the recruiter query and resume section jointly on TOP 100 Chunks for semantic matching step.
-
 This improves contextual understanding and ranking precision compared with embedding similarity alone and returns fina_rerank_score.
 
 ### Hybrid Ranking
@@ -260,13 +246,13 @@ Candidate ranking is decomposed into interpretable components such as:
 - Education relevance
 - Career trajectory signals
 
-This allows recruiters to clearly understand why a candidate is ranked higher or lower.
+This allows to clearly understand why a candidate is ranked higher or lower.
 
 ---
 
 ## Resume Evidence
 
-Evidence of skills and experience is generated using only the most relevant retrieved resume segments through semantic search and cross-encoder re-ranking.
+Evidence of skills and experience is generated using only the most relevant retrieved resume segments through semantic search and cross-encoder re-ranking at fingerprint.
 Every statement is traceable to source data.
 Evidence is backed by explicit references to resume sections such as:
 
@@ -276,7 +262,7 @@ Evidence is backed by explicit references to resume sections such as:
 - Education
 - Certifications
 
-This improves transparency and trust in the recommendation.
+This improves transparency, reduce time in evaluating 1000+ resumes and trust in the recommendation.
 
 ---
 
@@ -300,9 +286,8 @@ These metric offers insights into a candidate's job stability and can be an impo
 
 The LLM generates recruiter-friendly summaries that highlight:
 
-- Candidate strengths
-- Candidate gaps
-- Suggested screening questions
+- Candidate strengths and career progression insights
+- Suggess screening questions
 
 Instead of keyword filtering, this system enables transparent, evidence based candidate evaluation.
 
