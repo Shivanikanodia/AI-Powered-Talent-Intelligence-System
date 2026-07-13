@@ -1,6 +1,6 @@
 # 🧠 AI-Powered Talent Intelligence System
 
-e: To design and deploy an explainable, semantic AI resume search and talent analytics platform powered by a unified data lakehouse. The system replaces rigid keyword matching with contextual relevance scoring, maps temporal workforce trends, and enables hiring stakeholders to seamlessly build balanced talent pipelines.
+To design and deploy an explainable, semantic AI resume search and talent analytics platform powered by a unified data lakehouse. The system replaces rigid keyword matching with contextual relevance scoring, maps temporal workforce trends, and enables hiring stakeholders to seamlessly build balanced talent pipelines.
 
 ### Project Goals:
 
