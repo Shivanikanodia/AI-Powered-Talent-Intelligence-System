@@ -56,17 +56,74 @@ The solution combines semantic search, structured feature scoring, cross-encoder
 
 ## 🧠 System Architecture: High-Level
 
-The system follows a hybrid architecture:
+The system follows a hybrid architecture combining structured feature scoring, semantic search, and LLM-powered insights:
 
-1. Resume ingestion and parsing
-2. Resume structuring and normalization
-3. Feature engineering
-4. Semantic embedding generation
-5. FAISS based retrieval
-6. Cross encoder re-ranking
-8. Evidence extraction (skills, responsbililities, domain, experience, location and salary)
-9. LLM generated recruiter summaries
-10. Streamlit based recruiter interface
+```
+┌─────────────────┐
+│  PDF Resumes    │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│  Phase 1: Ingestion & Parsing           │
+│  • ai_parse_document()                  │
+│  • ai_extract() with schema             │
+│  • Bronze → Silver normalization        │
+└────────┬────────────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│  Phase 2: Feature Engineering           │
+│  • Skills matching                      │
+│  • Experience alignment                 │
+│  • Seniority/location fit               │
+└────────┬────────────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│  Phase 3: Semantic Search & Re-Ranking  │
+│  • BERT embeddings → FAISS index        │
+│  • Cross-encoder re-ranking             │
+│  • Hybrid score (features + semantic)   │
+└────────┬────────────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│  Phase 4: Evidence & Explainability     │
+│  • Resume evidence extraction           │
+│  • LLM recruiter summaries              │
+│  • Career trajectory analysis           │
+└────────┬────────────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────┐
+│  Streamlit UI + Genie Interface         │
+│  • Ranked candidates                    │
+│  • Feature scorecards                   │
+│  • Screening questions                  │
+└─────────────────────────────────────────┘
+```
+
+---
+
+## 📚 Module Reference
+
+Quick reference for key files and their purpose:
+
+| File/Module | Purpose | Key Functions |
+|-------------|---------|---------------|
+| **app.py** | Streamlit app entry point | Main UI rendering, user interactions |
+| **src/config.py** | Configuration management | Environment variables, table paths, job IDs |
+| **src/data_loader.py** | Data loading from Unity Catalog | `load_recruiter_ui()`, `load_resume_experience()` |
+| **src/evidence.py** | Resume evidence extraction | `extract_evidence()`, `validate_claims()` |
+| **src/recommendation.py** | LLM recommendation engine | `generate_recommendation()`, `suggest_screening_questions()` |
+| **src/scoring_pipeline.py** | Pipeline integration | `trigger_scoring_pipeline()`, `get_scored_candidates()` |
+| **src/ui_components.py** | Reusable Streamlit components | `render_candidate()`, `render_scorecard_table()` |
+| **scripts/trigger_pipeline.py** | Manual pipeline triggering | Pipeline execution, monitoring |
+| **notebooks/** | Data pipeline notebooks | Feature engineering, embeddings, evaluation |
+| **config/env.example.py** | Environment variable template | Setup guide for secrets |
+
+> **Full structure documentation**: See [docs/FILE_STRUCTURE.md](docs/FILE_STRUCTURE.md) for comprehensive file explanations.
 
 ---
 
@@ -110,62 +167,16 @@ Ranking Scores
 
 ## Phase 2: Resume Processing & Structuring
 
-The pipeline transforms unstructured resume PDFs into structured data using Databricks AI functions.
+Transforms unstructured PDFs into queryable structured data:
 
-Resumes are complex because they often contain columns, tables, varied layouts, and inconsistent formatting.
-
-### Ingestion
-
-Resumes are read from a Unity Catalog Volume using `read_files`.
-
-### Parsing
-
-`ai_parse_document` converts PDFs into un-structured Semi-JSON while preserving layout. Each resume is broken into smaller blocks called elements.
-
-Each element represents a piece of the resume and contains:
-
-- Element type
-- Extracted content
-- Confidence score, representing reliability of extraction
-- Bounding box, representing the position of the element on the page
-- Additional layout metadata
-
-- <img width="783" height="66" alt="Screenshot 2026-04-27 at 19 06 07" src="https://github.com/user-attachments/assets/62076fa3-5efe-4a1e-8983-be1e5cde47df" />
-
-The parsed JSON is flattened using `explode`, where each element becomes a row in a table.
-
-### Structured Extraction
-
-`ai_extract` is used with a defined schema to extract consistent candidate profile fields such as:
-
-- Skills
-- Work experience
-- Education
-- Projects
-- Certifications
-- Location
-- Candidate metadata
-
-This converts row-level parsed resume data into a structured candidate profile for querying and analysis.
-
-- `resume_core`
-- `resume_skills`
-- `resume_experience`
-- `resume_education`
-
-
-### Data Cleaning and Normalization:
-
-The system performs:
-
-- Formatting cleanup
-- Unicode handling
-- Deduplication
-- Skill normalization
-- Synonym expansion
-- Ontology-based mapping
-
-This helps standardize variations such as `ML`, `Machine Learning`, and `machine-learning` into consistent skill representations.
+1. **Ingestion**: Read PDFs from Unity Catalog Volume
+2. **Parsing**: `ai_parse_document()` extracts layout-preserving elements (text, tables, metadata)
+3. **Structured Extraction**: `ai_extract()` with schema generates:
+   - `resume_core` (name, email, location)
+   - `resume_skills`
+   - `resume_experience`
+   - `resume_education`
+4. **Normalization**: Standardize skills (`ML` → `Machine Learning`), handle synonyms, clean formatting
 
 <img width="729" height="195" alt="Screenshot 2026-04-27 at 19 07 41" src="https://github.com/user-attachments/assets/ca868aa9-845f-4b5b-aaa3-b390387b11a2" />
 
@@ -297,20 +308,6 @@ Instead of keyword filtering, this system enables transparent, evidence based ca
 
 ---
 
-
-## The app displays:
-
-###### Ranked candidate list and  Overall match score:
-
-###### Feature-level scorecard
-
-###### Resume evidence
-
-###### Career trajectory insights
-
-###### Recruiter-facing summary and  Suggested screening question
----
-
 # 📊 Evaluation Metrics
 
 The system is evaluated using ranking quality, latency, and factual consistency metrics.
@@ -375,27 +372,106 @@ The hybrid model improved over semantic search by combining multiple ranking sig
 # 📁 Project Structure
 
 ```text
-├── app.py
-├── requirements.txt
-├── README.md
-
-├── data/
-│   ├── recruiter_ui.csv
-│   └── resume_experience.csv
-
-├── src/
-│   ├── config.py
-│   ├── data_loader.py
-│   ├── parse.py
-│   ├── scoring.py
-│   ├── evidence.py
-│   ├── recommendation.py
-│   └── ui_components.py
-
+AI-Powered-Talent-Intelligence-System/
+├── README.md                  # Project overview & quick start
+├── app.py                     # Streamlit app entry point
+├── app.yaml                   # Databricks App deployment config
+├── requirements.txt           # Python dependencies
+├── .gitignore                 # Git exclusion rules
+│
+├── src/                       # Core application modules
+│   ├── config.py              # Configuration & environment management
+│   ├── data_loader.py         # Data loading from Unity Catalog
+│   ├── evidence.py            # Resume evidence extraction
+│   ├── recommendation.py      # LLM recommendation engine
+│   ├── scoring_pipeline.py    # Pipeline integration
+│   └── ui_components.py       # Streamlit UI components
+│
+├── notebooks/                 # Data pipeline notebooks
+│   ├── 02_feature_engineering.py
+│   └── 03_embeddings_and_reranking.py
+│
+├── config/                    # Configuration templates
+│   └── env.example.py         # Environment variable template
+│
+├── scripts/                   # Utility scripts
+│   └── trigger_pipeline.py    # Manual pipeline trigger
+│
+└── docs/                      # Documentation
+    ├── FILE_STRUCTURE.md      # Complete file explanations
+    └── ARCHITECTURE.md        # (Coming soon) System architecture
 ```
+
+> **See [docs/FILE_STRUCTURE.md](docs/FILE_STRUCTURE.md) for detailed explanations of each file and directory.**
+
 ---
 
-## Run instructions :
+# 🚀 Deployment & Operations
+
+## Environment Setup
+
+**Secrets Management:**
+- Copy `config/env.example.py` to `.env` in your project root
+- Add your Databricks workspace credentials:
+  - `DATABRICKS_HOST`
+  - `DATABRICKS_TOKEN`
+  - Unity Catalog table paths
+  - Job IDs for pipeline triggers
+  - Genie Space IDs (optional)
+
+**Never commit `.env` files** — they are excluded by `.gitignore`.
+
+## Databricks App Deployment
+
+To deploy as a Databricks App:
+
+```bash
+# From repo root
+databricks apps deploy
+```
+
+The `app.yaml` file configures:
+- Streamlit server settings
+- Environment variables
+- Compute requirements
+
+**Production checklist:**
+- ✅ All secrets in `.env` or Databricks Secrets
+- ✅ Unity Catalog tables accessible
+- ✅ Pipeline job IDs configured
+- ✅ Warehouse permissions granted
+
+## CI/CD
+
+**Current state**: Manual deployment  
+**Future**: GitHub Actions for automated testing and deployment
+
+---
+
+# 🧪 Testing Strategy
+
+## Current Testing Approach
+
+**Manual Testing:**
+- End-to-end testing via Streamlit UI
+- Pipeline validation through notebooks
+- Feature scoring verification on test queries
+
+**Evaluation Metrics:**
+- NDCG@K, MRR@K, Precision@K (see Evaluation section)
+- Hallucination detection for LLM outputs
+- Resume evidence grounding checks
+
+## Future Testing Roadmap
+
+- [ ] **Unit tests**: Core module testing (pytest)
+- [ ] **Integration tests**: Pipeline end-to-end validation
+- [ ] **Regression tests**: Ranking quality monitoring
+- [ ] **LLM evaluation**: MLflow-based tracking
+
+---
+
+## Quick Start
 git clone https://github.com/Shivanikanodia/AI-Powered-Talent-Intelligence-System.git
 
 cd AI-Powered-Talent-Intelligence-System
