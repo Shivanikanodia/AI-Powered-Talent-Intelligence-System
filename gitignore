@@ -1,8 +1,42 @@
+# Secrets & Credentials
 .env
+.env.local
+.streamlit/
+*.toml
+
+# Python
 .venv/
 venv/
+env/
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Databases
 *.sqlite3
+*.db
+
+# OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Backup files
+*_BACKUP.py
+*_OLD.py
+*_clean.py
+*_BROKEN*.py
+
+# Temporary
+DELETE_THESE_FILES.md
+*.tmp
 .streamlit/secrets.toml
