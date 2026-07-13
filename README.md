@@ -283,17 +283,7 @@ This improves transparency, reduce time in evaluating 1000+ resumes and trust in
 
 ## Hiring Signals & Career Trajectory
 
-Recruiters also care about stability and growth.
-The system calculates hiring signals from work history rather than generating them through the LLM.
-
-Examples include:
-
-- Average tenure per employee
-- Total Employer transitions in entire career trajectory
-- Career progression and promotions
-- Stability indicators
-
-These metric offers insights into a candidate's job stability and can be an important factor in evaluating their career consistency and loyalty to employers. Understanding job tenure can help organizations predict future employee retention and assess how reliable a candidate might be in long-term roles.
+The system calculates stability metrics from work history (not LLM-generated): average tenure, job transitions, career progression, and stability indicators. These metrics help predict retention and assess long-term reliability.
 
 ---
 
@@ -406,79 +396,32 @@ AI-Powered-Talent-Intelligence-System/
 
 ---
 
-# 🚀 Deployment & Operations
-
-## Environment Setup
-
-**Secrets Management:**
-- Copy `config/env.example.py` to `.env` in your project root
-- Add your Databricks workspace credentials:
-  - `DATABRICKS_HOST`
-  - `DATABRICKS_TOKEN`
-  - Unity Catalog table paths
-  - Job IDs for pipeline triggers
-  - Genie Space IDs (optional)
-
-**Never commit `.env` files** — they are excluded by `.gitignore`.
-
-## Databricks App Deployment
-
-To deploy as a Databricks App:
+# 🚀 Quick Start
 
 ```bash
-# From repo root
-databricks apps deploy
-```
-
-The `app.yaml` file configures:
-- Streamlit server settings
-- Environment variables
-- Compute requirements
-
-**Production checklist:**
-- ✅ All secrets in `.env` or Databricks Secrets
-- ✅ Unity Catalog tables accessible
-- ✅ Pipeline job IDs configured
-- ✅ Warehouse permissions granted
-
-## CI/CD
-
-**Current state**: Manual deployment  
-**Future**: GitHub Actions for automated testing and deployment
-
----
-
-# 🧪 Testing Strategy
-
-## Current Testing Approach
-
-**Manual Testing:**
-- End-to-end testing via Streamlit UI
-- Pipeline validation through notebooks
-- Feature scoring verification on test queries
-
-**Evaluation Metrics:**
-- NDCG@K, MRR@K, Precision@K (see Evaluation section)
-- Hallucination detection for LLM outputs
-- Resume evidence grounding checks
-
-## Future Testing Roadmap
-
-- [ ] **Unit tests**: Core module testing (pytest)
-- [ ] **Integration tests**: Pipeline end-to-end validation
-- [ ] **Regression tests**: Ranking quality monitoring
-- [ ] **LLM evaluation**: MLflow-based tracking
-
----
-
-## Quick Start
+# Clone the repository
 git clone https://github.com/Shivanikanodia/AI-Powered-Talent-Intelligence-System.git
 
+# Navigate to project directory
 cd AI-Powered-Talent-Intelligence-System
 
+# Install dependencies
 pip install -r requirements.txt
 
+# Set up environment variables
+cp config/env.example.py .env
+# Edit .env and add your Databricks credentials
+
+# Run the Streamlit app locally
 streamlit run app.py
+```
+
+**For AI recommendation engine:**
+```bash
+ollama run llama3
+```
+
+---
 
 # 🛠️ Tech Stack
 
@@ -494,9 +437,6 @@ streamlit run app.py
 - Streamlit
 - Pandas
 - NumPy
-
-### For AI recommendation:
-ollama run llama3
 
 # 🔮 Future Work
 
